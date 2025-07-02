@@ -10,6 +10,10 @@ PDF_JSON_CLEANED_PATH="../examples/${PAPER_NAME}/paper_cleaned.json" # _cleaned.
 OUTPUT_DIR="../outputs/${PAPER_NAME}"
 OUTPUT_REPO_DIR="../outputs/${PAPER_NAME}_repo"
 
+# TODO: Make file path absolute for other scripts
+cd "$_script_dir"
+_realpath_var PDF_PATH PDF_JSON_PATH PDF_JSON_CLEANED_PATH OUTPUT_DIR OUTPUT_REPO_DIR
+
 mkdir -p $OUTPUT_DIR
 mkdir -p $OUTPUT_REPO_DIR
 
