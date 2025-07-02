@@ -23,6 +23,8 @@ _parent_dir() {
 
 # '\''
 _load_json_env() {
+	local file="$1"
+	shift 1
 	eval "$(python -c '
 import json
 import sys
@@ -30,10 +32,10 @@ def quote(s):
 	return "'\''"+s.replace("'\''","'\''\\'\'''\''")+"'\''"
 for k,v in json.load(open(sys.argv[1],"rb")).items():
 	print("export '\''"+f"{k}={v}".replace("'\''","'\''\\'\'''\''")+"'\''")
-' "$1")"
+' "$file" "$@")"
 }
 _script_dir="$(_parent_dir)"
 _proj_dir="$(_parent_dir "$_script_dir")"
 
 cd "$_script_dir"
-_load_json_env "$_proj_dir/private/openai-key.json"
+_load_json_env "$_proj_dir/private/openai-key.json" OPENAI_API_KEY OPENAI_BASE_URL

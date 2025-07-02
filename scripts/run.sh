@@ -1,14 +1,14 @@
 set -e
 . "$(dirname "$0")/base"
 
-GPT_VERSION="deepseek-chat"
+GPT_VERSION="o3-mini"
 
 PAPER_NAME="Transformer"
-PDF_PATH="../examples/Transformer.pdf" # .pdf
-PDF_JSON_PATH="../examples/Transformer.json" # .json
-PDF_JSON_CLEANED_PATH="../examples/Transformer_cleaned.json" # _cleaned.json
-OUTPUT_DIR="../outputs/Transformer"
-OUTPUT_REPO_DIR="../outputs/Transformer_repo"
+PDF_PATH="../examples/${PAPER_NAME}/paper.pdf" # .pdf
+PDF_JSON_PATH="../examples/${PAPER_NAME}/paper.json" # .json
+PDF_JSON_CLEANED_PATH="../examples/${PAPER_NAME}/paper_cleaned.json" # _cleaned.json
+OUTPUT_DIR="../outputs/${PAPER_NAME}"
+OUTPUT_REPO_DIR="../outputs/${PAPER_NAME}_repo"
 
 mkdir -p $OUTPUT_DIR
 mkdir -p $OUTPUT_REPO_DIR

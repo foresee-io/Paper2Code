@@ -2,10 +2,10 @@
 
 GPT_VERSION="o3-mini"
 
-PAPER_NAME="Transformer"
-PDF_LATEX_CLEANED_PATH="../examples/Transformer_cleaned.tex" # _cleaned.tex
-OUTPUT_DIR="../outputs/Transformer"
-OUTPUT_REPO_DIR="../outputs/Transformer_repo"
+PAPER_NAME="${PAPER_NAME}"
+PDF_LATEX_CLEANED_PATH="../examples/${PAPER_NAME}/paper_cleaned.tex" # _cleaned.tex
+OUTPUT_DIR="../outputs/${PAPER_NAME}"
+OUTPUT_REPO_DIR="../outputs/${PAPER_NAME}_repo"
 
 mkdir -p $OUTPUT_DIR
 mkdir -p $OUTPUT_REPO_DIR

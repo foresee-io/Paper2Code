@@ -2,9 +2,9 @@ MODEL_NAME="deepseek-ai/DeepSeek-Coder-V2-Lite-Instruct"
 TP_SIZE=2
 
 PAPER_NAME="Transformer"
-PDF_LATEX_CLEANED_PATH="../examples/Transformer_cleaned.tex" # _cleaned.tex
-OUTPUT_DIR="../outputs/Transformer_dscoder"
-OUTPUT_REPO_DIR="../outputs/Transformer_dscoder_repo"
+PDF_LATEX_CLEANED_PATH="../examples/${PAPER_NAME}/paper_cleaned.tex" # _cleaned.tex
+OUTPUT_DIR="../outputs/${PAPER_NAME}_dscoder"
+OUTPUT_REPO_DIR="../outputs/${PAPER_NAME}_dscoder_repo"
 
 mkdir -p $OUTPUT_DIR
 mkdir -p $OUTPUT_REPO_DIR
