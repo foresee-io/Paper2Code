@@ -1,0 +1,39 @@
+#!/dev/null
+[ "${BASH_SOURCE[0]}" = "$0" ] && { echo "Do not run me directly! Source me instead." >&2;exit 1; }
+
+_parent_dir() {
+	local path="$0"
+	local level=1
+	if [ -n "$1" ];then
+		path="$1"
+	fi
+	if [ -n "$2" ];then
+		if ! [ "$level" -gt 0 ];then
+			return 2
+		fi
+		level="$2"
+	fi
+	[ -f "$path" ] && { path="$(dirname "$path")";level=$((level-1)); }
+	while [ $level -gt 0 ];do
+		path="$path/.."
+		level=$((level-1))
+	done
+	printf '%s' "$(realpath "$path")"
+}
+
+# '\''
+_load_json_env() {
+	eval "$(python -c '
+import json
+import sys
+def quote(s):
+	return "'\''"+s.replace("'\''","'\''\\'\'''\''")+"'\''"
+for k,v in json.load(open(sys.argv[1],"rb")).items():
+	print("export '\''"+f"{k}={v}".replace("'\''","'\''\\'\'''\''")+"'\''")
+' "$1")"
+}
+_script_dir="$(_parent_dir)"
+_proj_dir="$(_parent_dir "$_script_dir")"
+
+cd "$_script_dir"
+_load_json_env "$_proj_dir/private/openai-key.json"

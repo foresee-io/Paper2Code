@@ -3,6 +3,9 @@ import re
 import os
 from datetime import datetime
 
+default_cost_info = {"input": 2.50, "cached_input": 1.25, "output": 10.00}
+
+
 def extract_planning(trajectories_json_file_path):
     with open(trajectories_json_file_path) as f:
         traj = json.load(f)
@@ -245,7 +248,7 @@ def cal_cost(response_json, model_name):
     actual_input_tokens = prompt_tokens - cached_tokens
     output_tokens = completion_tokens
 
-    cost_info = model_cost[model_name]
+    cost_info = model_cost.get(model_name, default_cost_info)
 
     input_cost = (actual_input_tokens / 1_000_000) * cost_info['input']
     cached_input_cost = (cached_tokens / 1_000_000) * cost_info['cached_input']

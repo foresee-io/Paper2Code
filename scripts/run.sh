@@ -1,6 +1,7 @@
-# export OPENAI_API_KEY=""
+set -e
+. "$(dirname "$0")/base"
 
-GPT_VERSION="o3-mini"
+GPT_VERSION="deepseek-chat"
 
 PAPER_NAME="Transformer"
 PDF_PATH="../examples/Transformer.pdf" # .pdf
